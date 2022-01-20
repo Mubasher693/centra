@@ -23,3 +23,4 @@ RUN apt update \
     && pecl install xdebug
 RUN docker-php-ext-enable xdebug
 COPY docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/
+
