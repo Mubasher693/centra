@@ -59,8 +59,8 @@ class Application
                     'milestone' => $name,
                     'url'       => $data['html_url'],
                     'progress'  => $percent['percent'],
-                    'queued'    => $percent['remaining'],
-                    'active'    => $issues['active'],
+                    'queued'    => !empty($issues['queued']) ? $issues['queued'] : 0,
+                    'active'    => !empty($issues['active']) ? $issues['active'] : 0,
                     'completed' => $percent['complete']
                 ];
             }
@@ -95,9 +95,6 @@ class Application
                 'closed'    => $ii['closed_at']
             ];
         }
-        usort($issues['active'], function ($a, $b) {
-            return count($a['paused']) - count($b['paused']) === 0 ? strcmp($a['title'], $b['title']) : count($a['paused']) - count($b['paused']);
-        });
         return $issues;
     }
 
