@@ -61,7 +61,7 @@ class Application
                     'progress'  => $percent['percent'],
                     'queued'    => !empty($issues['queued']) ? $issues['queued'] : 0,
                     'active'    => !empty($issues['active']) ? $issues['active'] : 0,
-                    'completed' => $percent['complete']
+                    'completed' => !empty($issues['completed']) ? $issues['completed'] : 0
                 ];
             }
         }
