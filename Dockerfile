@@ -22,4 +22,5 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN apt update \
     && pecl install xdebug
 RUN docker-php-ext-enable xdebug
-COPY docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/
+COPY docker/php/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/
+CMD sed -i "s/80/$PORT/g" /etc/apache2/sites-enabled/000-default.conf /etc/apache2/ports.conf && docker-php-entrypoint apache2-foreground
